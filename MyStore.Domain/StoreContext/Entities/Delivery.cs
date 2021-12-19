@@ -15,5 +15,12 @@ namespace MyStore.Domain.StoreContext.Entities
         public DateTime CreateDate { get; private set; }
         public DateTime EstimatedDeliveryDate { get; private set; }
         public EDeliveryStatus Status { get; private set; }
+
+        public void Ship()
+        {
+            //se a data estimada de entrega for no passado não entregar
+            Status = EDeliveryStatus.Shipped;
+        }
+
     }
 }

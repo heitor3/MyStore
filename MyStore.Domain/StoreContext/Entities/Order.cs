@@ -13,7 +13,6 @@ namespace MyStore.Domain.StoreContext.Entities
         public Order(Customer customer)
         {
             Customer = customer;
-            Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0,8).ToUpper();
             CreateDate = DateTime.Now;
             Status = EOrderStatus.Created;
             _items = new List<OrderItem>();
@@ -32,11 +31,52 @@ namespace MyStore.Domain.StoreContext.Entities
             _items.Add(item);
         }
 
-        public void AddDelivery(Delivery delivery)
+        //criar pedido
+        public void Place()
         {
-            _deliveries.Add(delivery);
+            //gera numero do pedido
+            Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8).ToUpper();
+            //validar
         }
 
-        public void Place() { }
+        //pagar pedido
+        public void Pay()
+        {
+            Status = EOrderStatus.Paid;
+
+        }
+
+        //enviar pedido
+        public void Ship()
+        {
+            //a cada 5 produtos é uma entrega
+            var deliveries = new List<Delivery>();
+            deliveries.Add(new Delivery(DateTime.Now.AddDays(5)));
+            var count = 1;
+
+            //quebra as entregas
+            foreach (var item in _items)
+            {
+                if (count == 5)
+                {
+                    count = 1;
+                    deliveries.Add(new Delivery(DateTime.Now.AddDays(5)));
+                }
+                count++;
+            }
+
+            //envia todas as entregas
+            deliveries.ForEach(x => x.Ship());
+
+            //adiciona as entregas ao pedido
+            deliveries.ForEach(x => _deliveries.Add(x));
+        }
+         
+        //cancelar pedido
+        public void Cancel()
+        {
+            Status = EOrderStatus.Canceled;
+            _deliveries.ToList().ForEach(x => x.Cancel());
+        }
     }
 }
