@@ -22,5 +22,10 @@ namespace MyStore.Domain.StoreContext.Entities
             Status = EDeliveryStatus.Shipped;
         }
 
+        public void Cancel()
+        {
+            //se o status já estiver entregue, não pode cancelar
+            Status = EDeliveryStatus.Canceled;
+        }
     }
 }
