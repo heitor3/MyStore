@@ -21,13 +21,16 @@ namespace MyStore.Tests
             var notebook = new Product("Notebook", "Sansung", "image.png", 3540.00M, 20);
 
             var order = new Order(c);
-            order.AddItem(new OrderItem(mouse, 1));
-            order.AddItem(new OrderItem(teclado, 1));
-            order.AddItem(new OrderItem(headset, 1));
-            order.AddItem(new OrderItem(notebook, 1));
+            //order.AddItem(new OrderItem(mouse, 1));
+            //order.AddItem(new OrderItem(teclado, 1));
+            //order.AddItem(new OrderItem(headset, 1));
+            //order.AddItem(new OrderItem(notebook, 1));
 
             //realizar pedido
             order.Place();
+
+            //verificar se o pedido é valido
+            var valid = order.Valid;
 
             //simular pagamento
             order.Pay();
