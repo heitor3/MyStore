@@ -13,10 +13,10 @@ namespace MyStore.Domain.StoreContext.ValueObjects
 
             AddNotifications(new ValidationContract()
                 .Requires()
-                .HasMinLen(firstName, 3, "FirstName", "O nome deve conter pelo menos 3 caracteres")
-                .HasMaxLen(firstName, 40, "FirstName", "O nome deve conter pelo menos 40 caracteres")
-                .HasMinLen(firstName, 3, "LastName", "O sobrenome deve conter pelo menos 3 caracteres")
-                .HasMaxLen(firstName, 40, "LastName", "O sobrenome deve conter pelo menos 40 caracteres")
+                .HasMinLen(FirstName, 3, "FirstName", "O nome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(FirstName, 40, "FirstName", "O nome deve conter pelo menos 40 caracteres")
+                .HasMinLen(LastName, 3, "LastName", "O sobrenome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(LastName, 40, "LastName", "O sobrenome deve conter pelo menos 40 caracteres")
             );
         }
         public string FirstName { get; private set; }

@@ -1,14 +1,10 @@
 ﻿using FluentValidator;
 using FluentValidator.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyStore.Shared.Commands;
 
 namespace MyStore.Domain.StoreContext.Commands.CustomerCommands.Inputs
 {
-    public class CreateCustomerCommand: Notifiable
+    public class CreateCustomerCommand : Notifiable, ICommand
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -31,4 +27,3 @@ namespace MyStore.Domain.StoreContext.Commands.CustomerCommands.Inputs
         }
     }
 }
- 

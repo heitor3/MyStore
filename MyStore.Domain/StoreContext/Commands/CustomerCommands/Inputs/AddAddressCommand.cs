@@ -1,9 +1,5 @@
 ﻿using MyStore.Domain.StoreContext.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyStore.Domain.StoreContext.Commands.CustomerCommands.Inputs
 {
