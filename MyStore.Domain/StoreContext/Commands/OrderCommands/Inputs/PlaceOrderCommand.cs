@@ -22,7 +22,7 @@ namespace MyStore.Domain.StoreContext.Commands.OrderCommands.Inputs
                .HasLen(Customer.ToString(), 36, "Customer", "Identificador do Cliente inválido")
                .IsGreaterThan(OrderItems.Count, 0, "Items", "Nenhum item do pedido foi encontrado")
            );
-            return Valid();
+            return IsValid;
         }
     }
 

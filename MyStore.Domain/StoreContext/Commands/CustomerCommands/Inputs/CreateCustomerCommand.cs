@@ -23,7 +23,7 @@ namespace MyStore.Domain.StoreContext.Commands.CustomerCommands.Inputs
                .IsEmail(Email, "Email", "O E-mail é inválido")
                .HasLen(Document, 11, "Document", "CPF inválido")
            );
-            return Valid();
+            return IsValid;
         }
     }
 }

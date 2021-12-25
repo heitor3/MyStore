@@ -30,7 +30,7 @@ namespace MyStore.Tests
             order.Place();
 
             //verificar se o pedido é valido
-            var valid = order.Valid;
+            var valid = order.IsValid;
 
             //simular pagamento
             order.Pay();
